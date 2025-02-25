@@ -2127,16 +2127,16 @@
         },
         {
             "name": "livewirez/webauthn-laravel",
-            "version": "v0.1.43",
+            "version": "v0.1.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Livewirez/webauthn-laravel.git",
-                "reference": "1a8d94866ef4c259eabde2d5f965fcf8b1a91129"
+                "reference": "e7ef4bbbc2c11231de4035bc65a987e744ebd854"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Livewirez/webauthn-laravel/zipball/1a8d94866ef4c259eabde2d5f965fcf8b1a91129",
-                "reference": "1a8d94866ef4c259eabde2d5f965fcf8b1a91129",
+                "url": "https://api.github.com/repos/Livewirez/webauthn-laravel/zipball/e7ef4bbbc2c11231de4035bc65a987e744ebd854",
+                "reference": "e7ef4bbbc2c11231de4035bc65a987e744ebd854",
                 "shasum": ""
             },
             "require": {
@@ -2175,9 +2175,9 @@
             "description": "A laravel package for authenticating with webauthn passkeys on laravel applications.",
             "support": {
                 "issues": "https://github.com/Livewirez/webauthn-laravel/issues",
-                "source": "https://github.com/Livewirez/webauthn-laravel/tree/v0.1.43"
+                "source": "https://github.com/Livewirez/webauthn-laravel/tree/v0.1.47"
             },
-            "time": "2025-02-25T08:29:47+00:00"
+            "time": "2025-02-25T19:58:00+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -8459,23 +8459,23 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "11.0.8",
+            "version": "11.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "418c59fd080954f8c4aa5631d9502ecda2387118"
+                "reference": "14d63fbcca18457e49c6f8bebaa91a87e8e188d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/418c59fd080954f8c4aa5631d9502ecda2387118",
-                "reference": "418c59fd080954f8c4aa5631d9502ecda2387118",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/14d63fbcca18457e49c6f8bebaa91a87e8e188d7",
+                "reference": "14d63fbcca18457e49c6f8bebaa91a87e8e188d7",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
                 "ext-xmlwriter": "*",
-                "nikic/php-parser": "^5.3.1",
+                "nikic/php-parser": "^5.4.0",
                 "php": ">=8.2",
                 "phpunit/php-file-iterator": "^5.1.0",
                 "phpunit/php-text-template": "^4.0.1",
@@ -8487,7 +8487,7 @@
                 "theseer/tokenizer": "^1.2.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "^11.5.0"
+                "phpunit/phpunit": "^11.5.2"
             },
             "suggest": {
                 "ext-pcov": "PHP extension that provides line coverage",
@@ -8525,7 +8525,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/11.0.8"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/11.0.9"
             },
             "funding": [
                 {
@@ -8533,7 +8533,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-11T12:34:27+00:00"
+            "time": "2025-02-25T13:26:39+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

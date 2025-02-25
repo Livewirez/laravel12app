@@ -41,7 +41,7 @@ export interface User {
 
 export type PublicKeyCredentialSource = {
     id: number,
-    name?: string|null,
+    name?: string | null,
     public_key_credential_id: Base64URLString,
     public_key_credential_id_hex: string,
     credential_public_key: string,

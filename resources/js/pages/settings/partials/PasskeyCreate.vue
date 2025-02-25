@@ -6,7 +6,21 @@ import { ref } from 'vue';
 import { startRegistration, startAuthentication } from '@simplewebauthn/browser';
 import HeadingSmall from '@/components/HeadingSmall.vue';
 import { Button } from '@/components/ui/button';
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from '@/components/ui/dialog';
+import InputError from '@/components/InputError.vue';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import type { PublicKeyCredentialCreationOptionsJSON } from '@simplewebauthn/browser';
+
 
 import { type PublicKeyCredentialSource } from '@/types';
 
@@ -16,6 +30,10 @@ const props = defineProps<{
 
 const working = ref<boolean>(false);
 const registration_error = ref<string | null>(null);
+
+const form = ref({
+    name: '',
+})
 
 function startWebauthnPasskeyRegistration() {
     return new Promise((resolve, reject) => {
@@ -40,7 +58,7 @@ function startWebauthnPasskeyRegistration() {
                     console.log('AttestationResponse: ', r)
                     
                     // Send the response back to the server for verification
-                    const verificationResponse = await window.axios.post('/passkeys/verify-registration', { name: '', credentials: JSON.stringify(attResp) });
+                    const verificationResponse = await window.axios.post('/passkeys/verify-registration', { credentials: JSON.stringify(attResp), ...form.value });
                     
                     // Reset working state and resolve
                     working.value = false
@@ -82,6 +100,11 @@ function startWebauthnPasskeyRegistration() {
             });
     });
 }
+
+const closeModal = () => {
+    form.value.name = '';
+    registration_error.value = null;
+};
 </script>
 
 <template>
@@ -90,39 +113,55 @@ function startWebauthnPasskeyRegistration() {
         <section :class="{ 'cursor-wait': working }">
             <div class="mt-4 shadow-sm rounded-lg">
 
-                <Button  :disabled="working" @click="startWebauthnPasskeyRegistration()" :class="{ 'opacity-25 cursor-not-allowed': working }" >
+                <!-- <Button :disabled="working" @click="startWebauthnPasskeyRegistration()" :class="{ 'opacity-25 cursor-not-allowed': working }" >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
                     </svg>
                     
                     Add Passkey
-                </Button>
+                </Button> -->
 
-                <!-- Error Message -->
-                <template v-if="registration_error">
-                    <div class="text-red-500 mt-2">
-                        <p v-text="registration_error"></p>
-                    </div>
-                </template>
-            </div>
-
-            <div class="mt-6 bg-white shadow-sm dark:bg-neutral-700  rounded-lg divide-y">
-                <template v-if="passkeys.length > 0"  v-for="(passkey, i) in passkeys" :key="i">
-                    <div class="flex-1 p-4">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="dark:text-neutral-100">{{ passkey.name ?? `Passkey #${i}` }}</span>
+                <Dialog>
+                    <DialogTrigger as-child>
+                        <Button variant="default" :disabled="working" :class="{ 'opacity-25 cursor-not-allowed': working }">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
+                            </svg>
                             
-                                <small v-if="passkey.last_used_at" class="ml-2 text-sm text-neutral-600 dark:text-neutral-300">
-                                    {{ passkey.last_used_at }}
-                                </small>
+                            Add Passkey
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                        <form class="space-y-6" @submit.prevent="startWebauthnPasskeyRegistration">
+                            <DialogHeader class="space-y-3">
+                                <DialogTitle>Name of your Passkey</DialogTitle>
+                                <DialogDescription>
+                                    Please enter the name of your passkey.
+                                </DialogDescription>
+                            </DialogHeader>
+
+                            <div class="grid gap-2">
+                                <Label for="name" class="sr-only">Name</Label>
+                                <Input id="name" type="text" name="name" ref="nameInput" v-model="form.name" placeholder="Name" />
+                                <template v-if="registration_error">
+                                    <p class="text-sm text-red-600 dark:text-red-500">
+                                        {{ registration_error }}
+                                    </p>
+                                </template>
                             </div>
-                        </div>
-                    </div>
-                </template>
-                <div v-else class="p-4 text-neutral-800 dark:text-neutral-300">
-                    No passkeys registered yet.'
-                </div>
+
+                            <DialogFooter>
+                                <DialogClose as-child>
+                                    <Button variant="secondary" @click="closeModal"> Cancel </Button>
+                                </DialogClose>
+
+                                <Button variant="default" :disabled="working" :class="{ 'opacity-25 cursor-not-allowed': working }">
+                                    <button type="submit">Add Passkey</button>
+                                </Button>
+                            </DialogFooter>
+                        </form>
+                    </DialogContent>
+                </Dialog>
             </div>
         </section>
     </div>
