@@ -66,7 +66,7 @@ const closeModal = () => {
                     <DialogHeader class="space-y-3">
                         <DialogTitle>Are you sure you want to delete your passkey?</DialogTitle>
                         <DialogDescription>
-                            Once you delete this passkey, it cannot be used again.
+                            You will need to enter your password. Once you delete this passkey, it cannot be used again.
                         </DialogDescription>
                     </DialogHeader>
 

@@ -53,7 +53,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
                                 </div>
 
                                 <div class="flex gap-2">
-                                    <PasskeyUpdate :passkey="passkey" />
+                                    <PasskeyUpdate :passkey="passkey" :key="`passkey-update-${passkey.id}-${Date.now()}`"/>
                                     <PasskeyDestroy :passkey="passkey" />
                                 </div>
                             </div>
