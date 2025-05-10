@@ -2124,16 +2124,16 @@
         },
         {
             "name": "livewirez/webauthn-laravel",
-            "version": "v0.1.50",
+            "version": "v0.1.51",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Livewirez/webauthn-laravel.git",
-                "reference": "44b7d7c0452848c170e1987e28e4ee902e27fcb8"
+                "reference": "32b922703fc197a7b642b92f94c46697ec4f2e71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Livewirez/webauthn-laravel/zipball/44b7d7c0452848c170e1987e28e4ee902e27fcb8",
-                "reference": "44b7d7c0452848c170e1987e28e4ee902e27fcb8",
+                "url": "https://api.github.com/repos/Livewirez/webauthn-laravel/zipball/32b922703fc197a7b642b92f94c46697ec4f2e71",
+                "reference": "32b922703fc197a7b642b92f94c46697ec4f2e71",
                 "shasum": ""
             },
             "require": {
@@ -2172,9 +2172,9 @@
             "description": "A laravel package for authenticating with webauthn passkeys on laravel applications.",
             "support": {
                 "issues": "https://github.com/Livewirez/webauthn-laravel/issues",
-                "source": "https://github.com/Livewirez/webauthn-laravel/tree/v0.1.50"
+                "source": "https://github.com/Livewirez/webauthn-laravel/tree/v0.1.51"
             },
-            "time": "2025-05-10T18:14:44+00:00"
+            "time": "2025-05-10T18:39:32+00:00"
         },
         {
             "name": "monolog/monolog",

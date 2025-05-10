@@ -14,10 +14,15 @@ class PasskeyController extends Controller
     {
         return Inertia::render('settings/Passkeys', [
             'passkeys' => $request->user()->passkeys()->get()->map(static function (Passkey $source) {
-                $data = $source->only(['id', 'name', 'public_key_credential_id', 'counter', 'aaguid', 'user_handle', 'backup_status', 'backup_eligible', 'usage_count']);
-                $data['aaguid'] = Uuid::fromString($source->aaguid)->toRfc4122();
+                $data = $source->only(['id', 'name', 'public_key_credential_id', 'usage_count']);
+                $data['counter'] = $source->data->counter;
+                $data['aaguid'] = $source->data->aaguid;
+                $data['user_handle'] = $source->data->userHandle;
+                $data['backup_status'] = $source->data->backupStatus;
+                $data['backup_eligible'] = $source->data->backupEligible;
+                $data['aaguid'] = Uuid::fromString($source->data->aaguid)->toRfc4122();
                 $data['public_key_credential_id_hex'] = bin2hex($data['public_key_credential_id']);
-                $data['last_used_at'] = $source->last_used_at ? (new \DateTimeImmutable($source->last_used_at))->format('j M Y, g:i a') : null;
+                $data['last_used_at'] = $source->last_used_at?->format('j M Y, g:i a');
 
                 return (object) $data;
             }),
