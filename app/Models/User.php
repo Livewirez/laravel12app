@@ -3,16 +3,16 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Livewirez\Webauthn\PasskeyUserEntityTrait;
-use Livewirez\Webauthn\PasskeyUserEntityInterface;
+use Livewirez\Webauthn\PasskeyAuthenticatableTrait;
+use Livewirez\Webauthn\PasskeyAuthenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements PasskeyUserEntityInterface
+class User extends Authenticatable implements PasskeyAuthenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, PasskeyUserEntityTrait;
+    use HasFactory, Notifiable, PasskeyAuthenticatableTrait;
 
     /**
      * The attributes that are mass assignable.
