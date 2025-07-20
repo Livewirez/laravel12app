@@ -2129,12 +2129,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Livewirez/webauthn-laravel.git",
-                "reference": "0725c0e4446c026f7a6b4e61b720542edec3de07"
+                "reference": "abe72ca496409a642590cde74f1493af38b35cb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Livewirez/webauthn-laravel/zipball/0725c0e4446c026f7a6b4e61b720542edec3de07",
-                "reference": "0725c0e4446c026f7a6b4e61b720542edec3de07",
+                "url": "https://api.github.com/repos/Livewirez/webauthn-laravel/zipball/abe72ca496409a642590cde74f1493af38b35cb4",
+                "reference": "abe72ca496409a642590cde74f1493af38b35cb4",
                 "shasum": ""
             },
             "require": {
@@ -2175,7 +2175,7 @@
                 "issues": "https://github.com/Livewirez/webauthn-laravel/issues",
                 "source": "https://github.com/Livewirez/webauthn-laravel/tree/v0.1.54"
             },
-            "time": "2025-07-20T18:40:18+00:00"
+            "time": "2025-07-20T19:25:31+00:00"
         },
         {
             "name": "monolog/monolog",
