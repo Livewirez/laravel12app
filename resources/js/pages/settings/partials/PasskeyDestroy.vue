@@ -36,7 +36,7 @@ const form = useForm({
 });
 
 const deletePasskey = (e: Event) => {
-    form.delete(`/passkeys/passkey/${props.passkey.id}/delete`, {
+    form.patch(`/passkeys/passkey/${props.passkey.id}/delete`, {
         preserveScroll: true,
         onSuccess: () => closeModal(),
         onError: () => passwordInput.value?.focus(),
